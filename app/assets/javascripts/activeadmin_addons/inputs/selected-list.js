@@ -25,6 +25,7 @@ var initializer = function() {
       var responseRoot = element.data('response-root');
       var minimumInputLength = element.data('minimum-input-length');
       var order = element.data('order');
+      var custom_params = element.data('params');
 
       var selectOptions = {
         minimumInputLength: minimumInputLength,
@@ -47,6 +48,10 @@ var initializer = function() {
                 combinator: 'and',
               },
             };
+
+            for (var param in custom_params) {
+              query[param] = custom_params[param];
+            }
 
             return query;
           },
